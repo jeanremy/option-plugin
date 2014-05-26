@@ -65,7 +65,7 @@ function register_button( $buttons ) {
 }
 
 function add_plugin( $plugin_array ) {
-   $plugin_array['columns'] = plugins_url('js/shortcode_columns_tinymceplugin.js', __FILE__ );
+   $plugin_array['columns'] = plugins_url('js/shortcode_plugin.js', __FILE__ );
    return $plugin_array;
 }
 
