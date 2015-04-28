@@ -1,11 +1,11 @@
 #Wordpress Options Plugin#
 
-*Add an admin page to set options and add shortcodes*
+*Add an admin page to set options*
 
 ##How to use##
-*Options :* Install in plugin directory and enable. Find the page in Settings > Site options
+Install in plugin directory and enable. Find the page in Settings > Site options
 
-*Shortcodes :* Install plugin, and see "column" in Tiny Mce which adds a class to div, like col-6, col-4, etc. Then, style it in CSS.
+Not fully functionnal, needs to be fixed for file upload.
 
 
 
