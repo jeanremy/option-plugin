@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WordPress Option Page
+ * Plugin Name: JR WordPress Option Page
  * Plugin URI: 
  * Description: Une page d'options dans la partie réglages de WordPress.
  * Version: 1.0
@@ -10,77 +10,77 @@
  */
 
 
-class WordPressOptionPage {
+class JRWPOptionPage {
 
     public function __construct() {
-        add_action('admin_init', array($this, 'wpop_options_init' ));
-        add_action('admin_menu', array($this, 'wpop_options_add_page'));
-        add_action('admin_enqueue_scripts', array($this, 'wpop_option_script'));
+        add_action('admin_init', array($this, 'jrwpop_options_init' ));
+        add_action('admin_menu', array($this, 'jrwpop_options_add_page'));
+        add_action('admin_enqueue_scripts', array($this, 'jrwpop_option_script'));
     }
 
 
 	/****************
      * OPTIONS PAGE *
      ****************/
-    public function wpop_option_script() {
-        wp_enqueue_script('wpop_option_script', plugins_url( 'js/wpop-fileupload.js', __FILE__ ), array('jquery', 'plupload-all'),'', true);
+    public function jrwpop_option_script() {
+        wp_enqueue_script('jrwpop_option_script', plugins_url( 'js/jrwpop-fileupload.js', __FILE__ ), array('jquery', 'plupload-all'),'', true);
     }
 
     // Init plugin options to white list our options
-    public function wpop_options_init(){
-        register_setting( 'wpop_theme_options', '_wpop_theme_options', array($this, 'wpop_theme_options_validate') );
+    public function jrwpop_options_init(){
+        register_setting( 'jrwpop_theme_options', '_jrwpop_theme_options', array($this, 'jrwpop_theme_options_validate') );
     }
 
     // Add menu page
-    public function wpop_options_add_page() {
-        add_options_page('Options du site', 'Options du site', 'manage_options', 'wpop_theme_options', array($this, 'wpop_theme_options_page'));
+    public function jrwpop_options_add_page() {
+        add_options_page('Options du site', 'Options du site', 'manage_options', 'jrwpop_theme_options', array($this, 'jrwpop_theme_options_page'));
     }
 
     // HTML output for theme options
-    public function wpop_theme_options_page() {  
-        wp_enqueue_style('wpop_admin_css', plugins_url( 'css/wpop-admin.css', __FILE__ ), array(),'', false);
+    public function jrwpop_theme_options_page() {  
+        wp_enqueue_style('jrwpop_admin_css', plugins_url( 'css/jrwpop-admin.css', __FILE__ ), array(),'', false);
         ?>
 
         <div class="wrap">
             <h2>Options du site</h2>
             <form method="post" action="options.php" enctype="multipart/form-data">
-                <?php settings_fields('wpop_theme_options'); ?>
-                <?php $options = get_option('_wpop_theme_options');?>
+                <?php settings_fields('jrwpop_theme_options'); ?>
+                <?php $options = get_option('_jrwpop_theme_options');?>
                 <table class="form-table">
 
                     <tr valign="top">
                         <th scope="row">Pré-adresse</th>
-                        <td><input type="text" class="widefat" id="pre-address" name="_wpop_theme_options[pre-address]" value="<?php echo $options['pre-address'] ? $options['pre-address']:''; ?>" /></td>
+                        <td><input type="text" class="widefat" id="pre-address" name="_jrwpop_theme_options[pre-address]" value="<?php echo $options['pre-address'] ? $options['pre-address']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row">Adresse</th>
-                        <td><input type="text" class="widefat" id="address" name="_wpop_theme_options[address]" value="<?php echo $options['address'] ? $options['address']:''; ?>" /></td>
+                        <td><input type="text" class="widefat" id="address" name="_jrwpop_theme_options[address]" value="<?php echo $options['address'] ? $options['address']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row">Code Postal</th>
-                        <td><input type="text" class="widefat" id="zipcode" name="_wpop_theme_options[zipcode]" value="<?php echo $options['zipcode'] ? $options['zipcode']:''; ?>" /></td>
+                        <td><input type="text" class="widefat" id="zipcode" name="_jrwpop_theme_options[zipcode]" value="<?php echo $options['zipcode'] ? $options['zipcode']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row">Ville</th>
-                        <td><input type="text" class="widefat" id="city" name="_wpop_theme_options[city]" value="<?php echo $options['city'] ? $options['city']:''; ?>" /></td>
+                        <td><input type="text" class="widefat" id="city" name="_jrwpop_theme_options[city]" value="<?php echo $options['city'] ? $options['city']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row">Téléphone</th>
-                        <td><input type="text" class="widefat" id="phone" name="_wpop_theme_options[phone]" value="<?php echo $options['phone'] ? $options['phone']:''; ?>" /></td>
+                        <td><input type="text" class="widefat" id="phone" name="_jrwpop_theme_options[phone]" value="<?php echo $options['phone'] ? $options['phone']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row">Email</th>
-                        <td><input type="email" class="widefat" id="email" name="_wpop_theme_options[email]" value="<?php echo $options['email'] ? $options['email']:''; ?>" /></td>
+                        <td><input type="email" class="widefat" id="email" name="_jrwpop_theme_options[email]" value="<?php echo $options['email'] ? $options['email']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
                         <th scope="row">URL de la page Linkedin</th>
-                        <td><input type="text" class="widefat" id="linkedin" name="_wpop_theme_options[linkedin]" value="<?php echo $options['linkedin'] ? $options['linkedin']:''; ?>" /></td>
+                        <td><input type="text" class="widefat" id="linkedin" name="_jrwpop_theme_options[linkedin]" value="<?php echo $options['linkedin'] ? $options['linkedin']:''; ?>" /></td>
                     </tr>
 
                     <tr valign="top">
@@ -94,7 +94,7 @@ class WordPressOptionPage {
 
                 </table>
                 <p class="submit">
-                    <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'wpop') ?>" />
+                    <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'jrwpop') ?>" />
                 </p>
             </form>
         </div>
@@ -103,7 +103,7 @@ class WordPressOptionPage {
     }
 
     // Sanitize and validate input. Accepts an array, return a sanitized array.
-    public function wpop_theme_options_validate($input) {
+    public function jrwpop_theme_options_validate($input) {
         $input['pre-address'] =  strip_tags($input['pre-address']);
         $input['address'] =  wp_filter_nohtml_kses($input['address']);
         $input['zipcode'] =  wp_filter_nohtml_kses($input['zipcode']);
@@ -142,4 +142,4 @@ class WordPressOptionPage {
 
 }
 
-new WordPressOptionPage();
+new JRWPOptionPage();
